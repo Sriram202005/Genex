@@ -1,9 +1,9 @@
 import React from 'react';
-import ObjImage from '../assets/ourobj.png'; 
+import ObjImage from '../assets/ourobj.png';
 
 function Objective() {
   return (
-    <div className="min-h-screen bg-white text-gray-900 py-12 px-6 md:px-20 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-white text-gray-900 py-12 px-6 md:px-20 max-w-7xl mx-auto mt-24">
       <div className="flex flex-col md:flex-row gap-10 items-start">
         {/* Left Content */}
         <div className="flex-1">
@@ -43,11 +43,14 @@ function Objective() {
             <li className="hover:text-red-400 cursor-pointer">EAI / ERP Solutions</li>
           </ul>
         </div>
+
+        
         <div className="w-full md:w-1/3 flex justify-center items-center mt-40">
-        <img
-        src={ObjImage}
-        alt="GenexCorp Objective"
-        className="rounded-xl shadow-lg w-full object-cover max-h-[500px]"/>
+          <img
+            src={ObjImage}
+            alt="GenexCorp Objective"
+            className="rounded-xl shadow-lg w-full object-cover max-h-[500px]"
+          />
         </div>
       </div>
     </div>

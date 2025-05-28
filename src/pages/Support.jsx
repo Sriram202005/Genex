@@ -4,7 +4,7 @@ const Support = () => {
   return (
     <section className="bg-[#f9f9f9] py-16 px-4">
       <div className="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Support</h1>
+        <h1 className="text-3xl  text-center text-gray-800 mb-6">Support</h1>
         <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
           We're here to help you. Please fill out the form below, and our team will get back to you as soon as possible.
         </p>

@@ -22,7 +22,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="w-full h-[300px] md:h-[350px] overflow-hidden relative  rounded-xl shadow-lg mt-2">
+    <div className="w-full h-[300px] md:h-[350px] overflow-hidden relative rounded-xl shadow-lg mt-2">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 5000 }}
@@ -31,9 +31,9 @@ const Hero = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full flex">
-              {/* Image Container (left side) */}
-              <div className="w-1/2 h-full relative">
+            <div className="relative w-full h-full flex flex-col md:flex-row">
+              {/* Image Container (hidden on small screens) */}
+              <div className="hidden md:block md:w-1/2 h-full relative">
                 <img
                   src={slide.image}
                   alt={slide.title}
@@ -42,8 +42,8 @@ const Hero = () => {
                 <div className="absolute top-0 left-0 w-full h-full opacity-30"></div>
               </div>
 
-              {/* Content Container (right side) */}
-              <div className="w-1/2 h-full flex flex-col justify-center p-4 md:p-8 text-left z-10 bg-gradient-to-r from-transparent to-black/60">
+              {/* Content Container */}
+              <div className="w-full md:w-1/2 h-full flex flex-col justify-center p-4 md:p-8 text-left z-10 bg-gradient-to-r from-white via-white/90 to-white/80 md:from-transparent md:to-black/60">
                 <h2 className="text-xl md:text-3xl font-bold text-red-400 mb-2 md:mb-4">
                   {slide.title}
                 </h2>
@@ -52,7 +52,7 @@ const Hero = () => {
                 </p>
                 <a
                   href="#"
-                  className="text-s px-3 py-5 border border-red-400 text-red-400 rounded hover:bg-red-400 hover:text-white transition inline-block w-fit"
+                  className="text-sm px-3 py-2 border border-red-400 text-red-400 rounded hover:bg-red-400 hover:text-white transition inline-block w-fit"
                 >
                   Read more »
                 </a>

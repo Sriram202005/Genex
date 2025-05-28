@@ -20,7 +20,7 @@ export const TechnicalConsulting = () => {
   return (
     <section className="mt-20">
       <h2 className="text-3xl font-bold mb-6">Technology Consulting Arena</h2>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {images.map((img, index) => (
           <img
             key={index}
@@ -34,8 +34,6 @@ export const TechnicalConsulting = () => {
     </section>
   );
 };
-
-
 
 export const FunctionalConsulting = () => {
   const images = [j3, j7, j1, j2, j6, j12];

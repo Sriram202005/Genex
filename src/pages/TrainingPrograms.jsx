@@ -80,12 +80,12 @@ function TrainingPrograms() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-900 py-12 px-6 md:px-20 relative z-10 ">
-      <h1 className="text-4xl font-bold mb-12 text-center  tracking-wide">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-900 py-12 px-6 md:px-20 relative z-10 mt-24">
+      <h1 className="text-4xl  mb-12 text-center tracking-wide">
         Training / Internship Programs
       </h1>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10 ">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
         {programsData.map((program, index) => (
           <div
             key={index}

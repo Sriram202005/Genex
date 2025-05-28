@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
 
 function Navbar() {
@@ -11,6 +11,7 @@ function Navbar() {
 
   const showTimeout = useRef(null);
   const hideTimeout = useRef(null);
+  const location = useLocation();
 
   const toggleNav = () => setNavOpen(!navOpen);
 
@@ -35,16 +36,21 @@ function Navbar() {
     hideTimeout.current = setTimeout(() => setDropdownOpen(null), 300);
   };
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setNavOpen(false);
+    setDropdownOpen(null);
+  }, [location]);
+
   return (
     <nav
       className={`text-black w-full z-50 transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
-      } fixed top-0 shadow-lg`}
-      style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)' }}
+      } fixed top-0 shadow-lg bg-white`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-3">
-          <img src={logo} alt="Logo" className="h-12 w-auto" />
+          <img src={logo} alt="Logo" className="h-12 w-auto rounded-xl" />
         </div>
 
         {/* Desktop Nav */}
@@ -66,12 +72,8 @@ function Navbar() {
                 onMouseEnter={() => clearTimeout(hideTimeout.current)}
                 onMouseLeave={handleMouseLeave}
               >
-                <li>
-                  <Link to="/objective" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Our Objective</Link>
-                </li>
-                <li>
-                  <Link to="/portfolio" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Portfolio</Link>
-                </li>
+                <li><Link to="/objective" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Our Objective</Link></li>
+                <li><Link to="/portfolio" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Portfolio</Link></li>
               </ul>
             )}
           </li>
@@ -91,9 +93,9 @@ function Navbar() {
                 onMouseEnter={() => clearTimeout(hideTimeout.current)}
                 onMouseLeave={handleMouseLeave}
               >
-                <li><a href="#" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Product Development</a></li>
-                <li><a href="#" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">IT Consulting</a></li>
-                <li><a href="#" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">IT Resourcing</a></li>
+                <li><Link to="/product-development" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Product Development</Link></li>
+                <li><Link to="/it-consulting" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">IT Consulting</Link></li>
+                <li><Link to="/it-resourcing" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">IT Resourcing</Link></li>
               </ul>
             )}
           </li>
@@ -115,7 +117,7 @@ function Navbar() {
               >
                 <li><Link to="/training-programs" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Training / Internships</Link></li>
                 <li><Link to="/internship-programs" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Real-Time Internships</Link></li>
-                <li><a href="#" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Corporate Training</a></li>
+                <li><Link to="/corporate-training" className="block text-sm font-light hover:bg-gray-200 px-4 py-2 rounded">Corporate Training</Link></li>
               </ul>
             )}
           </li>
@@ -133,15 +135,20 @@ function Navbar() {
       {/* Mobile Nav */}
       {navOpen && (
         <div className="md:hidden bg-white px-4 pb-4 text-black font-medium space-y-5">
-          {/* Mobile Dropdowns */}
           {['home', 'services', 'trainings'].map((section) => (
             <div key={section}>
               <button
-                onClick={() => setDropdownOpen(dropdownOpen === section ? null : section)}
+                onClick={() =>
+                  setDropdownOpen(dropdownOpen === section ? null : section)
+                }
                 className="flex justify-between items-center w-full"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
-                <ChevronDown className={`w-5 h-5 ${dropdownOpen === section ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-5 h-5 ${
+                    dropdownOpen === section ? 'rotate-180' : ''
+                  }`}
+                />
               </button>
               {dropdownOpen === section && (
                 <ul className="pl-4 mt-1 space-y-2 text-sm text-black font-light">
@@ -153,16 +160,16 @@ function Navbar() {
                   )}
                   {section === 'services' && (
                     <>
-                      <li><a href="#" className="block hover:bg-gray-200 px-3 py-1 rounded">Product Development</a></li>
-                      <li><a href="#" className="block hover:bg-gray-200 px-3 py-1 rounded">IT Consulting</a></li>
-                      <li><a href="#" className="block hover:bg-gray-200 px-3 py-1 rounded">IT Resourcing</a></li>
+                      <li><Link to="/product-development" className="block hover:bg-gray-200 px-3 py-1 rounded">Product Development</Link></li>
+                      <li><Link to="/it-consulting" className="block hover:bg-gray-200 px-3 py-1 rounded">IT Consulting</Link></li>
+                      <li><Link to="/it-resourcing" className="block hover:bg-gray-200 px-3 py-1 rounded">IT Resourcing</Link></li>
                     </>
                   )}
                   {section === 'trainings' && (
                     <>
                       <li><Link to="/training-programs" className="block hover:bg-gray-200 px-3 py-1 rounded">Training / Internships</Link></li>
                       <li><Link to="/internship-programs" className="block hover:bg-gray-200 px-3 py-1 rounded">Real-Time Internships</Link></li>
-                      <li><a href="#" className="block hover:bg-gray-200 px-3 py-1 rounded">Corporate Training</a></li>
+                      <li><Link to="/corporate-training" className="block hover:bg-gray-200 px-3 py-1 rounded">Corporate Training</Link></li>
                     </>
                   )}
                 </ul>

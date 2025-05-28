@@ -8,7 +8,7 @@ import {
   Server,
   Zap,
 } from 'lucide-react';
-import {TechnicalConsulting, FunctionalConsulting} from '../components/Consulting'
+import { TechnicalConsulting, FunctionalConsulting } from '../components/Consulting';
 
 const internshipPrograms = [
   {
@@ -71,11 +71,9 @@ const internshipPrograms = [
 
 export default function InternshipPrograms() {
   return (
-    <section className="bg-gray-100 min-h-screen py-16 px-6 md:px-20">
+    <section className="bg-gray-100 min-h-screen py-16 px-6 md:px-20 mt-20">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl  text-center  mb-12">
-          PROACTIVE Internships
-        </h1>
+        <h1 className="text-4xl text-center mb-12">PROACTIVE Internships</h1>
         <p className="text-center text-gray-700 text-lg mb-12">
           Looking for PROACTIVE Interns who are willing to Learn and Contribute to these technologies with our Guidance.
         </p>
@@ -88,9 +86,7 @@ export default function InternshipPrograms() {
             >
               <div className="flex items-center gap-4 mb-4">
                 {program.icon}
-                <h2 className="text-xl font-semibold text-gray-800">
-                  {program.title}
-                </h2>
+                <h2 className="text-xl font-semibold text-gray-800">{program.title}</h2>
               </div>
               <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
                 {program.details.map((item, idx) => (
@@ -100,8 +96,9 @@ export default function InternshipPrograms() {
             </article>
           ))}
         </div>
-        <TechnicalConsulting/>
-        <FunctionalConsulting/>
+
+        <TechnicalConsulting />
+        <FunctionalConsulting />
       </div>
     </section>
   );
